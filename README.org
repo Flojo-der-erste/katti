@@ -1,5 +1,5 @@
-* Katti
-Welcome to Katti. Katti lets you do awesome stuff 🚀
+* Katti who? 
+Katti lets you do awesome stuff 🚀
 
 ** Requirements
 - GNU/Linux based operating system (tested on Ubuntu 20.04 and Arch Linux)
@@ -10,7 +10,7 @@ Welcome to Katti. Katti lets you do awesome stuff 🚀
 - Database: [[https://www.mongodb.com/][MongoDB]]
 - [[https://www.docker.com/][Docker]]
 
-Minimum tested hardware requirements: 2 core CPU, 8 GB RAM.
+Minimum tested hardware requirements: 8 core CPU, 12 GB RAM.
 
 As for the operating system, we recommend Ubuntu 20.04, as newer versions might not work with MongoDB.
 
@@ -42,12 +42,12 @@ $ pip install -r requirements
    #+begin_src sh :results output
 $ python setup.py install
    #+end_src
-7. Insert the scanners by running:
+7. Run the KattiSetup script:
    #+begin_src sh :results output
-$ python Scanner/InsertScanner.py
+$ python Scripts/KattiSetup.py
    #+end_src
 
-
+Now Katti ist ready.
 ** Running the Katti backend
 Edit the configuration files in =~/katti/config= to match your local config. In particular, check =database_configs.yml=.
 
