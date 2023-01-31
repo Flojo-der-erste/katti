@@ -1,0 +1,76 @@
+* Katti
+Welcome to Katti. Katti lets you do awesome stuff 🚀
+
+** Requirements
+- GNU/Linux based operating system (tested on Ubuntu 20.04 and Arch Linux)
+- [[https://www.python.org/][Python >= 3.10]] (tested on Python 3.10)
+- Celery backend and cache: [[https://redis.io/][Redis]]
+- Message broker: [[https://www.rabbitmq.com/][RabbitMQ]]
+- Web server: [[https://www.uvicorn.org/][Uvicorn]]
+- Database: [[https://www.mongodb.com/][MongoDB]]
+- [[https://www.docker.com/][Docker]]
+
+Minimum tested hardware requirements: 2 core CPU, 8 GB RAM.
+
+As for the operating system, we recommend Ubuntu 20.04, as newer versions might not work with MongoDB.
+
+** Installation instructions
+1. Install the required software listed above.
+2. Configure the maximum memory that Redis can use by editing your =/etc/redis.conf=. Uncomment the line =# maxmemory <bytes>= and replace =<bytes>= with an appropriate value for your system, for example =2g= for 2 GB. Make sure to restart the redis
+   service after changing the config file by running:
+   #+begin_src sh :results output
+$ sudo systemctl restart redis.service
+   #+end_src
+3. Clone this repository into your home directory:
+   #+begin_src sh :results output
+$ git clone https://gitlab.cert-bund.de/Flojo/katti ~/
+   #+end_src
+4. Optionally, set up and activate a virtual environment:
+  #+begin_src sh :results output
+$ cd ~/katti
+$ pip install virtualenv
+$ virtualenv venv
+$ source venv/bin/activate
+  #+end_src
+  Make sure that you use the correct Python version. We recommend Python 3.10.
+5. Install the dependencies:
+   #+begin_src sh :results output
+$ cd source_code
+$ pip install -r requirements
+   #+end_src
+6. Run the setup script:
+   #+begin_src sh :results output
+$ python setup.py install
+   #+end_src
+7. Insert the scanners by running:
+   #+begin_src sh :results output
+$ python Scanner/InsertScanner.py
+   #+end_src
+
+
+** Running the Katti backend
+Edit the configuration files in =~/katti/config= to match your local config. In particular, check =database_configs.yml=.
+
+If you created a virtual environment, make sure it is activated:
+#+begin_src sh :results output
+$ source ~/katti/venv/bin/activate
+#+end_src
+
+
+Now, run the backend by starting the Celery worker:
+#+begin_src sh :results output
+$ cd ~/katti/source_code/CeleryApps
+$ celery -A KattiApp worker --loglevel=DEBUG -Q crawling,scanning
+#+end_src
+
+
+** Running the API
+Run the API by starting the =uvicorn= web server. Please note that =uvicorn= is for experimental purposes only and should not be used in a production environment.
+
+#+begin_src sh :results output
+$ cd ~/katti/source_code/FastAPI
+$ uvicorn FastAPIApp:app --host <your_desired_host> --port <your_desired_port>
+#+end_src
+
+Check out the API documentation on =http://<your_host>:<your_port>/docs=.
+
