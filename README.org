@@ -1,5 +1,9 @@
 * Katti who? 
-Katti lets you do awesome stuff 🚀
+Katti lets you do awesome stuff 🚀 
+
+Katti is in the development phase. We are continuously working on improving Katti and adding new features. Therefore, we will release new versions at regular intervals. Do you have a question or an idea for a cool feature? Don't hesitate to contact us.
+
+The development of Katti is started as a pure crawling framework. In the meantime, Katti not only offers the possibility to automatically load websites and store the data, but also provides the tools to analyze the obtained data. The goal is to develop a scalable platform that allows an easy automated analysis of websites and their infrastructure. 
 
 ** Requirements
 - GNU/Linux based operating system (tested on Ubuntu 20.04 and Arch Linux)
@@ -13,6 +17,11 @@ Katti lets you do awesome stuff 🚀
 Minimum tested hardware requirements: 8 core CPU, 12 GB RAM.
 
 As for the operating system, we recommend Ubuntu 20.04, as newer versions might not work with MongoDB.
+
+** Tools we are using togehter with Katti:
+- To monitor celey: [[https://flower.readthedocs.io/en/latest/][flower]]
+- Data exploration and dashboards: [[https://www.metabase.com/][Metabase]]
+- GUI builder: [[https://www.appsmith.com/][Appsmith]]
 
 ** Installation instructions
 1. Install the required software listed above.
@@ -73,4 +82,11 @@ $ uvicorn FastAPIApp:app --host <your_desired_host> --port <your_desired_port>
 #+end_src
 
 Check out the API documentation on =http://<your_host>:<your_port>/docs=.
+
+
+** Next steps:
+- Publish a GUI for working and manage Katti
+- Adding an Usermanagement
+- Creation of detailed user documentation
+- 
 
