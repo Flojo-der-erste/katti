@@ -57,6 +57,9 @@ $ python Scripts/KattiSetup.py
    #+end_src
 
 Now Katti ist ready.
+** Demo-VMs:
+- [[https://my.hidrive.com/share/a-kggz.hbq][Demo-VMs]]
+
 ** Running the Katti backend
 Edit the configuration files in =~/katti/config= to match your local config. In particular, check =database_configs.yml=.
 
