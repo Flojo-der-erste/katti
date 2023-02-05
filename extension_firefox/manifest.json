@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "name": "Katti_2",
+  "version": "1.1",
+
+  "description": "Here should be a few sentence about the Extension, right? Well, it is complicated... Katti is a big secret because it is the next generation of AI surveillance software. A few lines of code and katti can see everything what you do. So have fun with the extension :)",
+
+
+  "background": {
+  "scripts": ["Tardis.js"]
+},
+"permissions": [
+  "downloads",
+  "webRequest",
+      "http://*/*",
+    "https://*/*",
+  "webNavigation",
+  "tabs",
+  "storage",
+  "alarms",
+  "webRequestBlocking",
+  "browsingData",
+  "management",
+  "<all_urls>",
+   "pageCapture"
+],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "js": ["DrWho.js"],
+      "run_at": "document_end"
+    }
+  ]
+
+
+}

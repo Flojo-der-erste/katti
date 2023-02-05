@@ -1,0 +1,16 @@
+scanner_type: 'dnsbl'
+scanner:
+  zen_spamhaus_org:
+    dnsbl: True
+    name_server_dnsbl: 'zen.spamhaus.org'
+    name_server_ips:
+      - '0.0.0.0'
+    allowed_record_types:
+      - 'A'
+    a_record_evaluation:
+      127.0.0.2: "SBL_Spamhaus_SBL_Data"
+      127.0.0.3: "SBL_Spamhaus_SBL_CSS_data"
+      127.0.0.4: "XBL_CBL_Data"
+      127.0.0.9: "SBL_Spamhaus_DROP/EDROP_Data"
+      127.0.0.10: "PBL_ISP_Maintained"
+      127.0.0.11: "PBL_Spamhaus_Maintained"

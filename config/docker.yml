@@ -1,0 +1,4 @@
+docker_host: "unix:///run/user/1000/docker.sock"
+crawler_docker_container_name: "crawler:latest"
+extra_args:
+  cpu_quota: 200000

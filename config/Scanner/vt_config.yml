@@ -1,0 +1,5 @@
+scanner_type: 'vt'
+scanner:
+  virus_total:
+    api_key: 'your_api_key'
+    vt_user: 'your_vt_user'

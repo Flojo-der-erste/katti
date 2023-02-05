@@ -1,0 +1,3 @@
+scanner_type: 'traceroute'
+scanner:
+  traceroute:

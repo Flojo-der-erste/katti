@@ -1,0 +1,8 @@
+broker: 'pyamqp://user:user@<IP>//'
+redis_db_nr: 1
+task_serializer: "pickle"
+result_serializer: "pickle"
+accept_content:
+  - 'application/json'
+  - 'application/x-python-serialize'
+  - 'pickle'

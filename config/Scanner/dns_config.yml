@@ -1,0 +1,52 @@
+scanner_type: 'dns'
+scanner:
+  google:
+    name_server_ips:
+      - '8.8.8.8'
+      - '8.8.4.4'
+    allowed_record_types:
+      - 'A'
+      - 'ANY'
+      - 'AAAA'
+
+  cisco_umbrella:
+    name_server_ips:
+      - '208.67.222.222'
+    allowed_record_types:
+      - 'A'
+      - 'AAAA'
+    aaaa_record_evaluation:
+      ::ffff:146.112.61.104: 'Domain List Block'
+      :ffff:146.112.61.105': 'Command and Control Callback'
+      ::ffff:146.112.61.106: 'Content Category or Application'
+      ::ffff:146.112.61.107: 'Malware'
+      ::ffff:146.112.61.108: 'Phishing'
+      ::ffff:146.112.61.110: 'Security Integrations Block Page, Newly Seen Domains, DNS Tunneling VPN, Potentially Harmful, & Dynamic DNS'
+    a_record_evaluation:
+      146.112.61.104: 'Domain List Block'
+      146.112.61.105: 'Command and Control Callback'
+      146.112.61.106: 'Content Category or Application'
+      146.112.61.107: 'Malware'
+      146.112.61.108: 'Phishing'
+      146.112.61.110: 'Security Integrations Block Page, Newly Seen Domains, DNS Tunneling VPN, Potentially Harmful, & Dynamic DNS'
+
+  quad9d:
+    name_server_ips:
+      - '9.9.9.9'
+    allowed_record_types:
+      - 'A'
+      - 'ANY'
+      - 'AAAA'
+    quad9_authority_check: True
+
+  cloudflare_security_malware:
+    allowed_record_types:
+      - 'A'
+      - 'AAAA'
+    name_server_ips:
+      - '1.1.1.2'
+    a_record_evaluation:
+      0.0.0.0: 'malicious'
+    aaaa_record_evaluation:
+      '::': 'aaaa_record_evaluation'
+

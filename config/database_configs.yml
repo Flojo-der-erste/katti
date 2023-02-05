@@ -1,0 +1,7 @@
+redis:
+    password: 'test'
+    host: 'IP'
+    port: 6379
+    user: ''
+mongodb:
+    katti: "mongodb://drwho:tardis@192.168.177.86:27017"

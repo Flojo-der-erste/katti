@@ -1,0 +1,4 @@
+scanner_type: 'shodan'
+scanner:
+  shodan:
+    api_key: 'your_api_key'

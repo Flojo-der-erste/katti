@@ -1,0 +1,3 @@
+scanner_type: 'ssl'
+scanner:
+  ssl_scanner:

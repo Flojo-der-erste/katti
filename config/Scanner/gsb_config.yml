@@ -1,0 +1,6 @@
+scanner_type: 'gsb'
+scanner:
+  gsb:
+    api_key: 'your_api_key'
+    gsb_server_ip: '127.0.0.1'
+    gsb_server_port: '8080'
