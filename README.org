@@ -65,8 +65,10 @@ $ CRTL+a+d
 #+end_src
 11. If you want to use Google Safe Browsing, log into the Backbone VM and start the GSB docker as follows:
   #+begin_src sh :results output
-$ docker run -d gsb:latest -apikey <Your key> -srvaddr 0.0.0.0:8080
+$ docker run -p 8080:8080 -d gsb:latest -apikey <Your key> -srvaddr 0.0.0.0:8080
+Change the IP address of the GSB scanner in the database.
  #+end_src
+ 
 You can check status https://<Backbone IP>:8080/status
 Now everything is ready.
 
