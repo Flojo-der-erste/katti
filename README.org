@@ -32,7 +32,7 @@ $ docker-compose up -d
 $ cd ~katti/source_code/Scripts
 $ ~/venv/bin/python3.10 SetupKatti.py
  #+end_src
-5. Start the API server:A
+5. Start the API server:
   #+begin_src sh :results output
 $ screen -S api 
 $ source venv/bin/activate
@@ -97,7 +97,7 @@ $ sudo systemctl restart redis.service
    #+end_src
 3. Clone this repository into your home directory:
    #+begin_src sh :results output
-$ git clone https://gitlab.cert-bund.de/Flojo/katti ~/
+$ git clone https://github.com/Flojo-der-erste/Katti.git ~/
    #+end_src
 4. Optionally, set up and activate a virtual environment:
   #+begin_src sh :results output
@@ -120,20 +120,18 @@ $ python setup.py install
    #+begin_src sh :results output
 $ python Scripts/KattiSetup.py
    #+end_src
+8. Create the docker image for the crawling:
+   #+begin_src sh :results output
+$ cd ~/katti
+$ docker build -f Docker/Crawling/Dockerfile . -t crawler:latest
+   #+end_src
+9. If you want to use Google-Safe-Browsing create the nesseary docker image:
+   #+begin_src sh :results output
+$ cd ~/katti
+$ docker build -f Docker/GSB/Dockerfile . -t gsb:latest
+   #+end_src
+Now Katti ist ready and you can use the systems like the demo VMs.
 
-Now Katti ist ready.
-
-
-
-** Running the API
-Run the API by starting the =uvicorn= web server. Please note that =uvicorn= is for experimental purposes only and should not be used in a production environment.
-
-#+begin_src sh :results output
-$ cd ~/katti/source_code/FastAPI
-$ uvicorn FastAPIApp:app --host <your_desired_host> --port <your_desired_port>
-#+end_src
-
-Check out the API documentation on =http://<your_host>:<your_port>/docs=.
 
 
 ** Next steps:
