@@ -37,7 +37,7 @@ $ ~/venv/bin/python3.10 SetupKatti.py
 $ screen -S api 
 $ source venv/bin/activate
 $ cd katti/source_code/FastApi
-$ uvicorn FastAPIApp:app --host 0.0.0.0
+$ uvicorn FastAPIApp:app --host 0.0.0.0 --port 8000
 $ CRTL+a+d
  #+end_src
 6. Start the necessary celery workers
