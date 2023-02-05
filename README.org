@@ -11,7 +11,7 @@ To try out Katti quickly and easily, we have prepared two demo VMs. Within the f
 Our recommendation is to start the Backbone VM with at least 4 CPU cores and 6 GB RAM. The Celery VM should be allocated at least the same resources. We recommend 2 CPU cores and 2 GB RAM per started Celery worker. It is necessary that both VMs can communicate with each other. The easiest way to do this is to use bridge mode.
 
 Steps to do fancy stuff:
-1. Start the Backbone VM and login via ssh: user:user
+1. Start the Backbone VM and login via SSH (user:user)
 2. Edit the followingen config files and add the IP of the Backbone VM (Be careful, YAML is sensitive to indentations.):
   #+begin_src sh :results output
 ~/docker-compose.yml
@@ -50,7 +50,7 @@ $ CRTL+a+d
 #+end_src
 7. Now the Backbone VM is ready.
 8. Start theCelery VM and login via SSH (user:user)
-9. Edit the followingen config files and add the IP of the Backbone VM (Be careful, YAML is sensitive to indentations.:
+9. Edit the followingen config files and add the IP of the Backbone VM (Be careful, YAML is sensitive to indentations.):
   #+begin_src sh :results output
 ~/katti/config/celery.yml
 ~/katti/config/database_configs.yml
@@ -66,10 +66,9 @@ $ CRTL+a+d
 11. If you want to use Google Safe Browsing, log into the Backbone VM and start the GSB docker as follows:
 
 
-
 Now everything is ready.
 
-11. Launch a browser and open the following [[http://<Backbone VM IP>:8082/app/katti/tardis-hq-63de2ca46f70f844ff712ab1][link]] to start your first crawl. Also in the app you will find a section Experiment. There you will find an easy way to repeat our experiment. It is also possible to log into Appsmith, the login is drwho:tardis. The credentials for the MongoDB instance are also drwho:tardis.
+11. Launch a browser and open the following URL http://<Backbone VM IP>:8082/app/katti/tardis-hq-63de2ca46f70f844ff712ab1 to start your first crawl. Also in the app you will find a section Experiment. There you will find an easy way to repeat our experiment. It is also possible to log into Appsmith, the login is drwho:tardis. The credentials for the MongoDB instance are also drwho:tardis.
 
 
 
