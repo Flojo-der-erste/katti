@@ -63,6 +63,9 @@ $ cd katti/source_code/CeleryApps
 $ celery -A KattiApp worker -Q crawling_crawling --concurrency=2 (It is possible to launch more workers, but then keep an eye on the resources.)
 $ CRTL+a+d
 #+end_src
+11. If you want to use Google Safe Browsing, log into the Backbone VM and start the GSB docker as follows:
+
+
 
 Now everything is ready.
 
