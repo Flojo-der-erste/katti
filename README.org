@@ -103,7 +103,7 @@ $ sudo systemctl restart redis.service
    #+end_src
 3. Clone this repository into your home directory:
    #+begin_src sh :results output
-$ git clone https://github.com/Flojo-der-erste/Katti.git ~/
+$ git clone https://github.com/Flojo-der-erste/katti.git ~/
    #+end_src
 4. Optionally, set up and activate a virtual environment:
   #+begin_src sh :results output
