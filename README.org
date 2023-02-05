@@ -5,6 +5,76 @@ Katti is in the development phase. We are continuously working on improving Katt
 
 The development of Katti is started as a pure crawling framework. In the meantime, Katti not only offers the possibility to automatically load websites and store the data, but also provides the tools to analyze the obtained data. The goal is to develop a scalable platform that allows an easy automated analysis of websites and their infrastructure. 
 
+** Demo-VMs:
+To try out Katti quickly and easily, we have prepared two demo VMs. Within the first VM (Backbone) RabbitMQ, MongoDB and Redis are already installed. Furthermore, the prototype of the GUI is included there. We create the GUI with the GUI builder Appsmith and at the moment it is only included in the demo VM. But soon it will be possible to integrate our Katti app into an Appsmith instance. The second VM (Celery) contains everything needed to start a crawler. Both VMs are available as exported VirtualBox machines and can be downloaded [[https://my.hidrive.com/share/a-kggz.hbq][here]].
+
+Our recommendation is to start the Backbone VM with at least 4 CPU cores and 6 GB RAM. The Celery VM should be allocated at least the same resources. We recommend 2 CPU cores and 2 GB RAM per started Celery worker. It is necessary that both VMs can communicate with each other. The easiest way to do this is to use bridge mode.
+
+Steps to do fancy stuff:
+1. Start the Backbone VM and login via ssh: user:user
+2. Edit the followingen config files and add the IP of the Backbone VM (Be careful, YAML is sensitive to indentations.):
+  #+begin_src sh :results output
+~/docker-compose.yml
+~/katti/config/celery.yml
+~/katti/config/database_configs.yml
+ #+end_src
+3. Restart Appsmith:
+  #+begin_src sh :results output
+$ cd ~
+$ docker-compose up -d
+ #+end_src
+3. If you want to use VirusTotal, Shodan or Google Safe Browsing, replace the wildcards in the following config files:
+   - ~/katti/config/Scanner/shodan_config.yml
+   - ~/katti/config/Scanner/vt_config.yml
+   - ~/katti/config/Scanner/gsb_config.yml
+4. The next stepp will prepare the database:
+  #+begin_src sh :results output
+$ cd ~katti/source_code/Scripts
+$ ~/venv/bin/python3.10 SetupKatti.py
+ #+end_src
+5. Start the API server:A
+  #+begin_src sh :results output
+$ screen -S api 
+$ source venv/bin/activate
+$ cd katti/source_code/FastApi
+$ uvicorn FastAPIApp:app --host 0.0.0.0
+$ CRTL+a+d
+ #+end_src
+6. Start the necessary celery workers
+  #+begin_src sh :results output
+$ screen -S celery
+$ source venv/bin/activate
+$ cd katti/source_code/CeleryApps
+$ celery -A KattiApp worker -Q crawling_request,crawling_analysis,scanning --concurrency=6
+$ CRTL+a+d
+#+end_src
+7. Now the Backbone VM is ready.
+8. Start theCelery VM and login via SSH (user:user)
+9. Edit the followingen config files and add the IP of the Backbone VM (Be careful, YAML is sensitive to indentations.:
+  #+begin_src sh :results output
+~/katti/config/celery.yml
+~/katti/config/database_configs.yml
+ #+end_sr
+10. Start the crawling celery workers:
+  #+begin_src sh :results output
+$ screen -S celery
+$ source venv/bin/activate
+$ cd katti/source_code/CeleryApps
+$ celery -A KattiApp worker -Q crawling_crawling --concurrency=2 (It is possible to launch more workers, but then keep an eye on the resources.)
+$ CRTL+a+d
+#+end_src
+
+Now everything is ready.
+
+11. Launch a browser and open the following [[http://<Backbone VM IP>:8082/app/katti/tardis-hq-63de2ca46f70f844ff712ab1][link]] to start your first crawl. Also in the app you will find a section Experiment. There you will find an easy way to repeat our experiment. It is also possible to log into Appsmith, the login is drwho:tardis. The credentials for the MongoDB instance are also drwho:tardis.
+
+
+
+** Tools we are using togehter with Katti:
+- To monitor celey: [[https://flower.readthedocs.io/en/latest/][flower]]
+- Data exploration and dashboards: [[https://www.metabase.com/][Metabase]]
+- GUI builder: [[https://www.appsmith.com/][Appsmith]]
+
 ** Requirements
 - GNU/Linux based operating system (tested on Ubuntu 20.04 and Arch Linux)
 - [[https://www.python.org/][Python >= 3.10]] (tested on Python 3.10)
@@ -15,13 +85,8 @@ The development of Katti is started as a pure crawling framework. In the meantim
 - [[https://www.docker.com/][Docker]]
 
 Minimum tested hardware requirements: 8 core CPU, 12 GB RAM.
-
 As for the operating system, we recommend Ubuntu 20.04, as newer versions might not work with MongoDB.
 
-** Tools we are using togehter with Katti:
-- To monitor celey: [[https://flower.readthedocs.io/en/latest/][flower]]
-- Data exploration and dashboards: [[https://www.metabase.com/][Metabase]]
-- GUI builder: [[https://www.appsmith.com/][Appsmith]]
 
 ** Installation instructions
 1. Install the required software listed above.
@@ -57,23 +122,7 @@ $ python Scripts/KattiSetup.py
    #+end_src
 
 Now Katti ist ready.
-** Demo-VMs:
-- [[https://my.hidrive.com/share/a-kggz.hbq][Demo-VMs]]
 
-** Running the Katti backend
-Edit the configuration files in =~/katti/config= to match your local config. In particular, check =database_configs.yml=.
-
-If you created a virtual environment, make sure it is activated:
-#+begin_src sh :results output
-$ source ~/katti/venv/bin/activate
-#+end_src
-
-
-Now, run the backend by starting the Celery worker:
-#+begin_src sh :results output
-$ cd ~/katti/source_code/CeleryApps
-$ celery -A KattiApp worker --loglevel=DEBUG -Q crawling,scanning
-#+end_src
 
 
 ** Running the API
