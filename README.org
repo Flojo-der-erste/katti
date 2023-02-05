@@ -64,8 +64,10 @@ $ celery -A KattiApp worker -Q crawling_crawling --concurrency=2 (It is possible
 $ CRTL+a+d
 #+end_src
 11. If you want to use Google Safe Browsing, log into the Backbone VM and start the GSB docker as follows:
-
-
+  #+begin_src sh :results output
+$ docker run -d gsb:latest -apikey <Your key> -srvaddr 0.0.0.0:8080
+ #+end_src
+You can check status https://<Backbone IP>:8080/status
 Now everything is ready.
 
 11. Launch a browser and open the following URL http://<Backbone VM IP>:8082/app/katti/tardis-hq-63de2ca46f70f844ff712ab1 to start your first crawl. Also in the app you will find a section Experiment. There you will find an easy way to repeat our experiment. It is also possible to log into Appsmith, the login is drwho:tardis. The credentials for the MongoDB instance are also drwho:tardis.
