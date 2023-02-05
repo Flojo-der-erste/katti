@@ -112,20 +112,24 @@ $ source venv/bin/activate
 $ cd source_code
 $ pip install -r requirements
    #+end_src
-6. Run the setup script:
+6. If you want to use VirusTotal, Shodan or Google Safe Browsing, replace the wildcards in the following config files:
+   - ~/katti/config/Scanner/shodan_config.yml
+   - ~/katti/config/Scanner/vt_config.yml
+   - ~/katti/config/Scanner/gsb_config.yml
+7. Run the setup script:
    #+begin_src sh :results output
 $ python setup.py install
    #+end_src
-7. Run the KattiSetup script:
+8. Run the KattiSetup script:
    #+begin_src sh :results output
 $ python Scripts/KattiSetup.py
    #+end_src
-8. Create the docker image for the crawling:
+9. Create the docker image for the crawling:
    #+begin_src sh :results output
 $ cd ~/katti
 $ docker build -f Docker/Crawling/Dockerfile . -t crawler:latest
    #+end_src
-9. If you want to use Google-Safe-Browsing create the nesseary docker image:
+10. If you want to use Google-Safe-Browsing create the nesseary docker image:
    #+begin_src sh :results output
 $ cd ~/katti
 $ docker build -f Docker/GSB/Dockerfile . -t gsb:latest
@@ -138,5 +142,5 @@ Now Katti ist ready and you can use the systems like the demo VMs.
 - Publish a GUI for working and manage Katti
 - Adding an Usermanagement
 - Creation of detailed user documentation
-- 
+
 
