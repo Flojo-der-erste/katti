@@ -20,6 +20,8 @@ Steps to do fancy stuff:
 3. Restart Appsmith:
   #+begin_src sh :results output
 $ cd ~
+$ export PATH=/usr/bin:$PATH
+$ export DOCKER_HOST=unix:///user/1000/docker.sock
 $ docker-compose up -d
  #+end_src
 3. If you want to use VirusTotal, Shodan or Google Safe Browsing, replace the wildcards in the following config files:
