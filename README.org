@@ -10,7 +10,7 @@ To try out Katti quickly and easily, we have prepared two demo VMs. Within the f
 Our recommendation is to start the Backbone VM with at least 4 CPU cores and 6 GB RAM. The Celery VM should be allocated at least the same resources. We recommend 2 CPU cores and 2 GB RAM per started Celery worker. It is necessary that both VMs can communicate with each other. The easiest way to do this is to use bridge mode.
 
 Steps to do fancy stuff:
-1. Start the Backbone VM and login (user:user)
+1. Start the Backbone VM and log in (user:user)
 2. Edit the followingen config files and add the IP of the Backbone VM (Be careful, YAML is sensitive to indentations.):
   #+begin_src sh :results output
 ~/docker-compose.yml
@@ -50,7 +50,7 @@ $ celery -A KattiApp worker -Q crawling_request,crawling_analysis,scanning --con
 $ CRTL+a+d
 #+end_src
 7. Now the Backbone VM is ready.
-8. Start theCelery VM and login (user:user)
+8. Start theCelery VM and log in (user:user)
 9. Edit the followingen config files and add the IP of the Backbone VM (Be careful, YAML is sensitive to indentations.):
   #+begin_src sh :results output
 ~/katti/config/celery.yml
@@ -89,7 +89,7 @@ Now everything is ready.
 - Message broker: [[https://www.rabbitmq.com/][RabbitMQ]]
 - Web server: [[https://www.uvicorn.org/][Uvicorn]]
 - Database: [[https://www.mongodb.com/][MongoDB]]
-- [[https://www.docker.com/][Docker]]
+- [[https://www.docker.com/][Docker]] (rootless)
 
 Minimum tested hardware requirements: 8 core CPU, 12 GB RAM.
 As for the operating system, we recommend Ubuntu 20.04, as newer versions might not work with MongoDB.
