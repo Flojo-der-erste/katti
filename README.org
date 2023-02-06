@@ -147,7 +147,7 @@ Now Katti ist ready and you can use the systems like the demo VMs.
 
 ** Next steps:
 - Publish a GUI for working and manage Katti
-- Adding an Usermanagement
+- Adding an user management
 - Creation of detailed user documentation
 
 
