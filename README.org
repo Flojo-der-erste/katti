@@ -50,7 +50,7 @@ $ celery -A KattiApp worker -Q crawling_request,crawling_analysis,scanning --con
 $ CRTL+a+d
 #+end_src
 7. Now the Backbone VM is ready.
-8. Start theCelery VM and log in (user:user)
+8. Start the Celery VM and log in (user:user)
 9. Edit the followingen config files and add the IP of the Backbone VM (Be careful, YAML is sensitive to indentations.):
   #+begin_src sh :results output
 ~/katti/config/celery.yml
