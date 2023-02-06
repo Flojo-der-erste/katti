@@ -88,7 +88,7 @@ If you rather want to install Katti from scratch, follow these steps:
 - Message broker: [[https://www.rabbitmq.com/][RabbitMQ]]
 - Web server: [[https://www.uvicorn.org/][Uvicorn]]
 - Database: [[https://www.mongodb.com/][MongoDB]]
-- [[https://www.docker.com/][Docker]]
+- [[https://www.docker.com/][Docker]] (rootless)
 
 Minimum tested hardware requirements: 8 core CPU, 12 GB RAM.
 As for the operating system, we recommend Ubuntu 20.04, as newer versions might not work well with MongoDB.
@@ -139,9 +139,7 @@ $ docker build -f Docker/GSB/Dockerfile . -t gsb:latest
    #+end_src
 Now Katti ist ready and you can use the systems just like in the demo VMs.
 
-
-
-* Roadmap
+* Next steps
 - Publish a GUI for working and managing Katti
 - Add a means of user management
 - Create a detailed user documentation
