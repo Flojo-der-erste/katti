@@ -29,5 +29,5 @@ class BaseTaskStatistics(BaseStatistics):
 
     def stop_and_save(self):
         self.stop_time = datetime.datetime.utcnow()
-        self.run_time = (self.stop_time - self.start_time).microseconds
+        self.run_time = (self.stop_time - self.start_time).total_seconds()
         self.save()
