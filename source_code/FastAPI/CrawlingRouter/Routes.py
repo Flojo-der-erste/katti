@@ -73,7 +73,7 @@ async def execute_crawling_request(data: ExperimentRequest):
 
 async def get_single_bundle_id(crawling_request_id: ObjectId) -> ObjectId:
     start_wait = datetime.datetime.utcnow()
-    while (datetime.datetime.utcnow() - start_wait).seconds < 30:
+    while (datetime.datetime.utcnow() - start_wait).total_seconds() < 30:
         time.sleep(0.5)
         cursor = await get_async_cursor_bundle_for_crawling_request(db=db, crawling_request_id=crawling_request_id, projection={'_id': 1})
         async for bundle_id in cursor:
