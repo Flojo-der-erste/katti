@@ -155,7 +155,7 @@ class DockerCommunicatorServer:
     def send_command(self, cmd: typing.Union[DockerCMD], wait_time_for_execution) -> DockerAnswer:
         self._send_command_to_docker(cmd)
         start_time = datetime.datetime.utcnow()
-        while (datetime.datetime.utcnow() - start_time).seconds <= wait_time_for_execution:
+        while (datetime.datetime.utcnow() - start_time).total_seconds() <= wait_time_for_execution:
             answer = self.get_response()
             if answer:
                 return answer
