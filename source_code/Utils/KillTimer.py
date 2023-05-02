@@ -27,7 +27,7 @@ class KillTimer:
         if not self._timer:
             self.start()
         else:
-            self._time_left = self._timeout - ((datetime.datetime.now() - self._start_time).seconds)
+            self._time_left = self._timeout - ((datetime.datetime.now() - self._start_time).total_seconds())
             self._timer.cancel()
             self._timer = None
 
