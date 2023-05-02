@@ -315,10 +315,10 @@ class IFramesAreStupid2:
             else:
                 WebDriverWait(self.driver, wait_time).until(EC.frame_to_be_available_and_switch_to_it(iframe._raw_iframe))
         except TimeoutException:
-            self._max_wait_time_lef -= (datetime.datetime.now() - start).seconds
+            self._max_wait_time_lef -= (datetime.datetime.now() - start).total_seconds()
             return False
         else:
-            self._max_wait_time_lef -= (datetime.datetime.now() - start).seconds
+            self._max_wait_time_lef -= (datetime.datetime.now() - start).total_seconds()
             return True
 
     def _is_frame_visibility(self, iframe):
@@ -331,10 +331,10 @@ class IFramesAreStupid2:
             else:
                 WebDriverWait(self.driver, wait_time).until(EC.visibility_of(iframe._raw_iframe))
         except TimeoutException:
-            self._max_wait_time_lef -= (datetime.datetime.now() - start).seconds
+            self._max_wait_time_lef -= (datetime.datetime.now() - start).total_seconds()
             return False
         else:
-            self._max_wait_time_lef -= (datetime.datetime.now() - start).seconds
+            self._max_wait_time_lef -= (datetime.datetime.now() - start).total_seconds()
             return True
 
     def _is_frame_big_enough(self, frame: RootiFrame):
