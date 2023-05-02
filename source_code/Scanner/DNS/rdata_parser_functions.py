@@ -63,11 +63,10 @@ def parse_ptr_record(rdata: str) -> dict:
 
 def parse_srv_record(rdata: str) -> dict:
     data_split = rdata.split(' ')
-    return {'service': data_split[0],
-            'priority': data_split[1],
-            'weight': data_split[2],
-            'port': data_split[3],
-            'target': data_split[4]}
+    return {'priority': int(data_split[0]),
+            'weight': int(data_split[1]),
+            'port': data_split[2],
+            'target': data_split[3]}
 
 def parse_tlsa_record(rdata: str) -> dict:
     data_split = rdata.split(' ')
