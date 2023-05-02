@@ -74,7 +74,7 @@ def check_authorization_and_rate_limit(katti_user, api_endpoint):
 async def wait_for_task(task_id, task: Task):
     start = datetime.datetime.utcnow()
     result = None
-    while (datetime.datetime.utcnow() - start).seconds <= get_fastapi_config().celery_wait_timeout_s:
+    while (datetime.datetime.utcnow() - start).total_seconds() <= get_fastapi_config().celery_wait_timeout_s:
         try:
             result = task.AsyncResult(task_id).get(0.005)
         except Exception:
