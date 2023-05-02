@@ -274,7 +274,7 @@ class CrawlingExecutor:
             return
         try:
             start = datetime.datetime.utcnow()
-            while (datetime.datetime.utcnow() - start).seconds < 5:
+            while (datetime.datetime.utcnow() - start).total_seconds() < 5:
                 if self._dns_task.ready():
                     return self._proof_dns_result(self._dns_task.results)
         except Exception:
