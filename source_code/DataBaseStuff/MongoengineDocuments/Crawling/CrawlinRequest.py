@@ -46,7 +46,7 @@ class CrawlingRequest(AbstractNormalDocument):
     operation_group_modi = StringField(choices=['waiting', 'not_waiting'], default='waiting')
 
     def set_heartbeat(self):
-        if (datetime.datetime.utcnow() - self.heartbeat).seconds > 60:
+        if (datetime.datetime.utcnow() - self.heartbeat).total_seconds() > 60:
             self.heartbeat = datetime.datetime.utcnow()
             CrawlingRequest.objects(id=self.id).update_one(set__heartbeat=self.heartbeat)
 
