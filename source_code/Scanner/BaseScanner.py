@@ -232,7 +232,7 @@ class BaseScanner:
             self._save_new_scanning_result()
 
     def _check_if_redis_cache_not_to_old(self, ):
-        if (datetime.datetime.utcnow() - self.scanning_result.katti_create).seconds < self._time_valid_response:
+        if (datetime.datetime.utcnow() - self.scanning_result.katti_create).total_seconds() < self._time_valid_response:
             return True
         else:
             return False
@@ -248,7 +248,7 @@ class BaseScanner:
             self.scanning_result = None
 
     def _check_if_mongodb_cache_not_to_old(self):
-        if not self.scanning_result or not (datetime.datetime.utcnow() - self.scanning_result.katti_create).seconds < self._time_valid_response:
+        if not self.scanning_result or not (datetime.datetime.utcnow() - self.scanning_result.katti_create).total_seconds() < self._time_valid_response:
             return False
         return True
 
@@ -267,7 +267,7 @@ class BaseScanner:
 
     def _wait_for_valid_result(self):
         start_wait_time = datetime.datetime.now()
-        while (datetime.datetime.now() - start_wait_time).seconds < self._scanner_document.max_wait_time_for_cache:
+        while (datetime.datetime.now() - start_wait_time).total_seconds() < self._scanner_document.max_wait_time_for_cache:
             self._get_redis_cache()
             if self.scanning_result and self._check_if_redis_cache_not_to_old():
                 return True
