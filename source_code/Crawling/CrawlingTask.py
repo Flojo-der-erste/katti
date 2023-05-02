@@ -216,7 +216,7 @@ class CrawlingTask:
     @set_update_status
     def _wait_for_downloads(self):
         start_time = datetime.datetime.utcnow()
-        while (datetime.datetime.utcnow() - start_time).seconds < self._browser_config.max_download_wait_time_s:
+        while (datetime.datetime.utcnow() - start_time).total_seconds() < self._browser_config.max_download_wait_time_s:
             answer = self._docker_communicator.send_command(cmd=DownloadFinishedCMD(), wait_time_for_execution=self._crawling_config.docker_common_wait_time_for_answer)
             if answer.all_finished:
                 self._logger.debug('All downloads finished or no downloads :)')
