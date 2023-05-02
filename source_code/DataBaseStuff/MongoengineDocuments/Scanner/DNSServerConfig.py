@@ -162,7 +162,6 @@ class DNSResult(BaseScanningResults):
 
     class SRVRecord(EmbeddedDocument):
         ttl = IntField()
-        service = StringField()
         priority = IntField()
         weight = IntField()
         port = IntField()
